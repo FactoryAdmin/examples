@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/modal.css" />
+    <title>Modal</title>
+  </head>
+  <body>
+    <button popovertarget="modal" class="open-btn">Abrir Modal</button>
+
+    <!-- Modal usando popover -->
+    <div id="modal" popover class="modal">
+      <button popovertarget="modal" class="close-btn" aria-label="Cerrar">
+        ×
+      </button>
+      <h2>Acciones</h2>
+      <p>¿Está seguro que desea eliminar el usuario?</p>
+    </div>
+  </body>
+</html>
