@@ -34,9 +34,22 @@ const writeProducts = (products: any[]) => {
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 const getProducts = async (req: Request, res: Response) => {
+  const { page, size } = req.query;
+
   await delay(3000);
   const products = readProducts();
-  res.status(200).json(products);
+  const requestPage = (page || 1) as number;
+  const requestElementToShow = (size || 10) as number;
+  const lastIndex = requestPage * requestElementToShow;
+  const firstIndex = lastIndex - requestElementToShow;
+
+  const response = {
+    pages: products.length / 10,
+    totalElements: products.length,
+    values: products.slice(firstIndex, lastIndex),
+  };
+
+  res.status(200).json(response);
 };
 
 const createProduct = async (req: Request, res: Response) => {
